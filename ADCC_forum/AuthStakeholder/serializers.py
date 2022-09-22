@@ -20,15 +20,15 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         if self.validated_data['type'] == 'farmer':
+            print("hey iam reached")
             first_name = self.validated_data['first_name']
-            last_name = self.validated_data['last_name']
-            email = self.validated_data['email']
+            # last_name = self.validated_data['last_name']
+            # email = self.validated_data['email']
             password = self.validated_data['password']
             username = self.validated_data['username']
-            phone = self.validated_data['phone']
+            # phone = self.validated_data['phone']
             type = self.validated_data['type']
-            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email,
-                                            password=password, phone=phone, type=type)
+            user = User.objects.create_user(username=username, password=password, type=type, first_name=first_name)
             return user
         elif self.validated_data['type'] == 'admin':
             email = self.validated_data['email']

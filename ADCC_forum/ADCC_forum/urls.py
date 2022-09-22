@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('AuthStakeholder.urls', namespace='AuthStakeholder')),
+    path('main/', include('MainInformations.urls', namespace='MainInformations')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

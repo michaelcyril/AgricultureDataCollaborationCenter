@@ -20,7 +20,7 @@ class Wilaya(models.Model):
 
 class User(AbstractUser):
     choice = (("farmer", "farmer"), ("admin", "admin"),)
-    phone = models.CharField(max_length=10)
+    phone = models.CharField(max_length=10, null=True, blank=True)
     type = models.CharField(max_length=20, choices=choice, default='farmer')
     created_at = models.DateField(auto_now_add=True, null=True)
     USERNAME_FIELD = 'username'
@@ -39,3 +39,11 @@ class AdminProfile(models.Model):
 
     def __str__(self):
         return self.institute
+
+
+class Farmer(models.Model):
+    phone = models.CharField(max_length=10)
+    code = models.CharField(max_length=6)
+
+    def __str__(self):
+        return self.phone
